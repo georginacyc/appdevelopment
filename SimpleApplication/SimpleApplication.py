@@ -1,13 +1,17 @@
 from flask import Flask, render_template,request,redirect,url_for
 from forms import CreateUserForm
 import shelve, User
+
 app = Flask(__name__)
+
 @app.route('/')
 def home():
     return render_template('home.html')
+
 @app.route('/contactUs')
 def contactUs():
  return render_template('contactUs.html')
+
 @app.route('/createUser', methods=['GET', 'POST'])
 def createUser():
  createUserForm = CreateUserForm(request.form)
@@ -26,6 +30,7 @@ def createUser():
         return redirect(url_for('retrieveUsers'))
     return redirect(url_for('home'))
  return render_template('createUser.html', form=createUserForm)
+
 @app.route('/retrieveUsers')
 def retrieveUsers():
     usersDict = {}
