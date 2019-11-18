@@ -4,13 +4,21 @@ import shelve, User
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
+
 @app.route('/contactUs')
 def contactUs():
  return render_template('contactUs.html')
+
+
+@app.route('/staffHome')
+def staffHome():
+    return render_template('staffHome.html')
+
 
 @app.route('/createUser', methods=['GET', 'POST'])
 def createUser():
@@ -31,6 +39,7 @@ def createUser():
     return redirect(url_for('home'))
  return render_template('createUser.html', form=createUserForm)
 
+
 @app.route('/retrieveUsers')
 def retrieveUsers():
     usersDict = {}
@@ -42,5 +51,7 @@ def retrieveUsers():
         user = usersDict.get(key)
         usersList.append(user)
     return render_template('retrieveUsers.html',usersList=usersList, count=len(usersList))
+
+
 if __name__ == '__main__':
     app.run()
