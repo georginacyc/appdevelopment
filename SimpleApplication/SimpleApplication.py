@@ -59,6 +59,13 @@ def retrieveUsers():
         usersList.append(user)
     return render_template('retrieveUsers.html',usersList=usersList, count=len(usersList))
 
+@app.route('/salesReports')
+def salesReports():
+    return render_template('salesReports.html')
+
+@app.route('/createNewReport')
+def createNewReport():
+    return render_template('create.html')
 
 if __name__ == '__main__':
     app.run()
