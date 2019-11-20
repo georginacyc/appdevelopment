@@ -23,6 +23,9 @@ def contactUs():
 def staffHome():
     return render_template('staffHome.html')
 
+@app.route('/inventory')
+def inventory():
+    return render_template('inventory.html')
 
 @app.route('/createUser', methods=['GET', 'POST'])
 def createUser():
